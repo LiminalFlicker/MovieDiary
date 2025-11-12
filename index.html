@@ -4,10 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Popcorn Diary</title>
+    <link rel="icon" type="image/png" href="assets/images/favicon.png" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&family=Nunito+Sans:ital,wght@0,400;0,600;1,400&display=swap"
+      rel="stylesheet"
+    />
     <style type="text/tailwindcss">
-      @layer base {
-      }
+      @tailwind base;
+      @tailwind components;
+      @tailwind utilities;
+
       @theme {
         --color-background-main: #0a0f24;
         --color-background-cards: #1c2333;
@@ -17,9 +25,30 @@
         --color-main-text-light-grey: #e5e7eb;
         --color-secondary-text-grey-blue: #9ca3af;
       }
-      @tailwind base;
-      @tailwind components;
-      @tailwind utilities;
+
+      @layer base {
+        body {
+          @apply font-[Nunito_Sans]
+          bg-background-main
+          text-main-text-light-grey;
+        }
+        h1,
+        h2,
+        h3 {
+          @apply font-[Poppins] text-popcorn-gold-accent1 font-semibold;
+        }
+        a,
+        button {
+          @apply transition-all duration-300 ease-in-out;
+        }
+        a:hover,
+        button:hover {
+          @apply text-mint-accent2;
+        }
+        nav {
+          @apply backdrop-blur-md bg-background-cards/60 border-b border-main-text-light-grey/10;
+        }
+      }
 
       @layer components {
         /* Create new Tailwind classes aka. components in `@layer components`  */
@@ -27,12 +56,73 @@
       }
     </style>
   </head>
-  <body class="bg-background-main">
-    <header>
-      <nav><ul></ul></nav>
-    </header>
-    <main></main>
-    <footer></footer>
+
+  <body
+    class="bg-background-main text-main-text-light-grey min-h-screen flex flex-col"
+  >
+    <!-- 🌐 Sticky Glass Navbar -->
+    <nav
+      class="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-background-cards/70 shadow-lg border-b border-popcorn-gold-accent1/20"
+    >
+      <div
+        class="max-w-7xl mx-auto flex justify-between items-center px-6 py-3"
+      >
+        <!-- LOGO + TEXT -->
+        <div class="flex items-center gap-3 sm:gap-4">
+          <!-- Logo -->
+          <img
+            src="assets/images/popcorn-logo.png"
+            alt="Popcorn Diary Logo"
+            class="h-20 w-auto drop-shadow-md"
+          />
+          <!-- Text -->
+          <div class="flex flex-col leading-tight">
+            <h1
+              class="text-xl sm:text-2xl md:text-3xl font-bold text-popcorn-gold-accent1 tracking-wide font-[Poppins]"
+            >
+              Popcorn Diary
+            </h1>
+            <p
+              class="text-xs sm:text-sm md:text-base text-mint-accent2 mt-0.5 sm:mt-1 font-[Nunito Sans] italic"
+            >
+              Your Personal Movie Library
+            </p>
+          </div>
+        </div>
+        <!-- Navigation -->
+        <ul class="flex gap-6 text-secondary-text-grey-blue font-medium">
+          <li>
+            <a
+              href="index.html"
+              class="hover:text-mint-accent2 transition-colors duration-200"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="journal.html"
+              class="hover:text-mint-accent2 transition-colors duration-200"
+              >Journal</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Spacer for sticky nav -->
+    <div class="h-20"></div>
+
+    <!-- ✨ Main Section -->
+    <main class="flex-grow px-4 sm:px-8 md:px-16 py-10">
+      <!-- Content will go here -->
+    </main>
+
+    <!-- ⚡ Footer -->
+    <footer
+      class="mt-auto bg-background-cards/80 backdrop-blur-xs text-center p-4 text-sm text-secondary-text-grey-blue border-t border-popcorn-gold-accent1/10"
+    >
+      <p>© 2025 Popcorn Diary — Made with 🍿 by Our Team</p>
+    </footer>
     <script src="main.js" type="module"></script>
   </body>
 </html>
