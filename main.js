@@ -7,6 +7,7 @@ const TMDB_ConfigurationEndpoint = "/configuration";
 const TMDB_PopularMoviesEndpoint = "/movie/popular";
 const NumberOfPages = "1";
 const TMDB_PopMov_options = `?language=en-US&page=${NumberOfPages}`;
+const MAX_NR_OF_MOVIES = 16;
 
 const options = {
   method: "GET",
@@ -18,6 +19,10 @@ const options = {
 
 const movieContainer = document.querySelector(`#movies-container`);
 let ImageBaseUrl = "";
+
+/* # Select image size. Options are:
+ * "w45", "w92", "w154", "w185" ,"w300", "w500", "original"
+ */
 const ImageFileSize = "original";
 
 /* # Data we need from TMDB for rendering the movie cards:
@@ -28,9 +33,10 @@ const ImageFileSize = "original";
  * - title
  */
 function renderMovieCards(movieData, NumberOfMovies) {
-  console.log("bas", ImageBaseUrl);
-  movieData.results.forEach((element) => {
-    const html = `
+  let index = 0;
+  for (const element of movieData.results) {
+    if (index++ < MAX_NR_OF_MOVIES) {
+      const html = `
         <article
           class="#${
             element.id
@@ -38,8 +44,8 @@ function renderMovieCards(movieData, NumberOfMovies) {
         >
           <!-- Poster -->
           <img src="https://${ImageBaseUrl.slice(7)}${ImageFileSize}${
-      element.poster_path
-    }" alt="Poster" class="w-full h-64 object-cover" />
+        element.poster_path
+      }" alt="Poster" class="w-full h-64 object-cover" />
 
           <!-- Content -->
           <div class="p-4 flex flex-col justify-between h-44">
@@ -81,8 +87,11 @@ function renderMovieCards(movieData, NumberOfMovies) {
           </div>
         </article>`; /* Back ticks, JavaScript Template literals */
 
-    movieContainer.insertAdjacentHTML(`beforeend`, html);
-  });
+      movieContainer.insertAdjacentHTML(`beforeend`, html);
+    } else {
+      break;
+    }
+  }
 }
 
 function getTmdbConfig() {
@@ -93,6 +102,7 @@ function getTmdbConfig() {
       return res.json();
     })
     .then((data) => {
+      // console.log(data);
       ImageBaseUrl = data.images.base_url;
     })
     .catch((err) => console.error(err));
