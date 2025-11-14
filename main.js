@@ -125,3 +125,18 @@ function getPopularMovies() {
 }
 
 getPopularMovies();
+
+const searchApi = async function () {
+  try {
+    const res = await fetch(TMDB_ApiV3BaseUrl);
+    if (!res.ok) {
+      throw new Error("ma ente Hmar");
+    }
+    const data = await res.json();
+    console.log(data);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+searchApi();
