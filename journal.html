@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Popcorn Diary Journal</title>
+    <title>Journal | Popcorn Diary</title>
     <link rel="icon" type="image/png" href="assets/images/favicon.png" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <!-- Google Fonts -->
@@ -114,7 +114,15 @@
 
     <!-- ✨ Main Section -->
     <main class="flex-grow px-4 sm:px-8 md:px-16 py-10">
-      <!-- Content will go here -->
+      <!--  Favorite Movies Headline -->
+      <h2 class="text-2xl font-bold text-popcorn-gold-accent1 mb-6 text-center">
+        Your Favorite Movies
+      </h2>
+      <!--  FilmKarten von Index.html -->
+      <section
+        id="movies-container"
+        class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+      ></section>
     </main>
 
     <!-- ⚡ Footer -->
@@ -123,6 +131,6 @@
     >
       <p>© 2025 Popcorn Diary — Made with 🍿 by Our Team</p>
     </footer>
-    <script src="journal.js"></script>
+    <script src="journal.js" type="module"></script>
   </body>
 </html>
