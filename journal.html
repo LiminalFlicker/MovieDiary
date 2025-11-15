@@ -55,6 +55,20 @@
         /* Use @apply to inline any existing utility classes into your own custom CSS. */
       }
     </style>
+
+    <!--  style für Notizen -->
+    <style>
+      .slide {
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: max-height 0.5s ease, opacity 0.4s ease;
+      }
+      .slide.open {
+        max-height: 2000px;
+        opacity: 1;
+      }
+    </style>
   </head>
 
   <body
@@ -122,6 +136,11 @@
       <section
         id="movies-container"
         class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+      ></section>
+      <!-- Movie Details Section -->
+      <section
+        id="movie-details"
+        class="max-w-5xl mx-auto mt-16 hidden"
       ></section>
     </main>
 
