@@ -108,7 +108,6 @@
         </ul>
       </div>
     </nav>
-
     <!-- Spacer for sticky nav -->
     <div class="h-20"></div>
 
@@ -116,6 +115,47 @@
     <main class="flex-grow px-4 sm:px-8 md:px-16 py-10">
       <!-- Content will go here -->
 
+        <!-- Search Section -->
+       <section class="flex space-x-10 justify-between items-center m-6 px-6 lg:h-[200px] 
+       bg-background-cards/70 rounded-xl overflow-hidden shadow-md border border-popcorn-gold-accent1/10 transition transform hover:-translate-y-1 
+       hover:scale-[1.02] hover:shadow-lg duration-300
+       ">
+        <div>
+        <h2 class="text-2xl">Discover popular movies & keep your favourites</h1>
+        <span class="text-2xl">search, save, and write notes -- all ine one cinematic diary</span>
+        </div>
+        <div>
+          <form class="max-w-md mx-auto" id= search>
+          <label for="search" class="block mb-2.5 text-sm font-medium text-heading sr-only ">Search</label>
+            <div class="relative">
+            <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+            <svg class="w-4 h-4 text-body" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" 
+            width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2"
+            d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/></svg>
+            </div>
+          <input type="search" id="search-input" class="w-full p-3 ps-9 bg-neutral-secondary-medium border border-popcorn-gold-accent1/10 text-heading rounded-lg
+          text-sm rounded-base focus:ring-brand focus:border-brand shadow-xs 
+          " placeholder="Search" required  />
+          <button type= 'submit' class="bg-red-400 border 
+          absolute end-1.5 bottom-1.5 text-white bg-brand hover:bg-brand-strong box-border border-transparent focus:ring-4 focus:ring-brand-medium 
+          shadow-xs font-medium leading-5 rounded text-xs px-3 py-1.5 focus:outline-none
+          ">Search</button>
+          </div>
+          </form>
+        </div>
+       </section>
+       <!-- movie details card -->
+       <section>
+        <div
+        id="movie-details-overlay"
+        class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm place-items-center overflow-y-auto z-50 p-6"
+      >
+        <div
+          id="movie-details-card"
+          class="mt-auto mb-auto bg-background-cards/70 border border-popcorn-gold-accent1/20 rounded-xl px-8 py-5 shadow-lg max-w-4xl w-full opacity-0 translate-y-5 scale-95 transition-all duration-500"
+        ></div>
+      </div>
+      </section>
       <!-- 🎬 Movie Card Template -->
       <section
         id="movies-container"
