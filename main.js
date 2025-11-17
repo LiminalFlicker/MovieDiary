@@ -65,7 +65,7 @@ function renderMovieCards(movieData, NumberOfMovies) {
             <!-- Footer (release + button) -->
             <div class="mt-3 flex items-center justify-between gap-3">
               <div class="text-sm text-secondary-text-grey-blue">
-               Release: ${element.release_date}
+               ${element.release_date}
               </div>
               <button
               data-overview="${element.overview}"
